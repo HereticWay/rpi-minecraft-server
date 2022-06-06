@@ -1,0 +1,4 @@
+minecraft-server/serverfiles/**
+minecraft-world-ramsync/world/**
+minecraft-world-ramsync/world-tmpfs/**
+!**/.gitkeep

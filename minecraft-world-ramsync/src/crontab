@@ -1,0 +1,1 @@
+*/5 * * * * /usr/bin/flock -n /dev/shm/worldsync.lock /App/save-world.sh

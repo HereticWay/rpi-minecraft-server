@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+    minecraft-world-ramsync:
+        container_name: minecraft-world-ramsync
+        build: ./minecraft-world-ramsync/src
+        volumes:
+            - ./minecraft-world-ramsync/world:/App/world:rw
+            - ./minecraft-world-ramsync/world-tmpfs:/App/world-tmpfs:rw
+
+    minecraft-server:
+        container_name: minecraft-server
+        build: ./minecraft-server/src
+        ports:
+            - "25566:25565"
+            - "24454:24454/udp"
+        volumes:
+            - ./minecraft-server/serverfiles:/App:rw
+            - ./minecraft-world-ramsync/world-tmpfs:/App/world:rw
+        depends_on:
+            - "minecraft-world-ramsync"
+        restart: unless-stopped
