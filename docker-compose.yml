@@ -7,6 +7,7 @@ services:
         volumes:
             - ./minecraft-world-ramsync/world:/App/world:rw
             - ./minecraft-world-ramsync/world-tmpfs:/App/world-tmpfs:rw
+        restart: unless-stopped
 
     minecraft-server:
         container_name: minecraft-server
